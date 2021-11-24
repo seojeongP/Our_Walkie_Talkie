@@ -53,6 +53,8 @@ int main(){
 		fwrite(buffer, 1, n, out);
 
 	}
+	
+	system("aplay /home/seojeong/Desktop/systemprogramming/test/out.mp3");
 
 	printf("File write complete... You can now use the output file!!\n");
 
