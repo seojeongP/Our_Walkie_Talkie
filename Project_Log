@@ -8,4 +8,7 @@ third, we used ip address in code.
 
 
 ### 12.1    
-audio problem solve using mpg123.   
+audio problem solve using mpg123. --> (x)   
+using alsa.   
+
+we will compress audio file to send.  
