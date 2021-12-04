@@ -11,7 +11,7 @@
 
 int system(const char* string);
 int main(void){
-	char buf[BUF_SIZ], s_buf[BUF_SIZ];
+	char buf[BUF_SIZ], s_buf[10], len_buf[10], null_buf[5];
 	struct sockaddr_in sin, cli;
 	FILE *sendf, *recvf;
 	int i, in_f_len;
@@ -30,7 +30,7 @@ int main(void){
 	memset((char *)&sin, '\0',serverlen);
 	sin.sin_family =AF_INET;
 	sin.sin_port = htons(PORTNUM);
-	sin.sin_addr.s_addr = inet_addr("192.168.0.103");
+	sin.sin_addr.s_addr = inet_addr("192.168.0.105");
 
 	printf("bind...\n");
 	if(bind(access_socket,(struct sockaddr *)&sin, serverlen)){
@@ -78,8 +78,9 @@ int main(void){
 //	sendf = fopen("/home/seojeong/Desktop/systemprogramming/12.4/recv.mp3", "r");
 //	fclose(sendf);
 	while(1){
-		memset(s_buf, '\0',BUF_SIZ);
-       		fgets(s_buf, BUF_SIZ, stdin);
+		memset(s_buf, '\0', sizeof(s_buf));
+		printf("please enter the s\n");
+       		fgets(s_buf, sizeof(s_buf), stdin);
         
 		if(!strcmp(s_buf, "s\n")){
                 	system("arecord -d 5 /home/seojeong/Desktop/systemprogramming/12.4/test.mp3");
@@ -96,8 +97,9 @@ int main(void){
 		in_f_len = ftell(sendf);
 		fseek(sendf, 0, SEEK_SET);
 
-		sprintf(buf, "%d", in_f_len);
-		send(comm_socket, buf, sizeof(buf), 0);
+		sprintf(len_buf, "%d", in_f_len);
+		printf("len_buf : %s\n", len_buf);
+		send(comm_socket, len_buf, sizeof(len_buf), 0);
 
 		//send file content
 		memset(buf, '\0', BUF_SIZ);
@@ -113,7 +115,9 @@ int main(void){
         	ab  = send(comm_socket, buf, sizeof(buf), 0);
         	printf("ab : %d\n", ab);
 
-		
+		printf("please enter any key\n");
+		fgets(null_buf, sizeof(null_buf), stdin);
+
 		memset(buf, '\0', BUF_SIZ);
                 //recv(comm_socket, buf, BUF_SIZ, 0);
                 if(recv(comm_socket, buf, BUF_SIZ, 0) != -1){
