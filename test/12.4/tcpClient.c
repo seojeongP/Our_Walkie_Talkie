@@ -59,7 +59,7 @@ int main(void){
 		while(sum>0){
 			printf("restart\n");
 			printf("sum : %d\n", sum);
-			if((ab = recv(sock, buf, sum,0)) == -1){
+			if((ab = recv(sock, buf, sum-1,0)) == -1){
 				perror("recv");
 				exit(1);	
 			}
@@ -101,6 +101,7 @@ int main(void){
 			exit(1);	
 		}
 		send(sock,buf,sizeof(buf),0);
+		printf("USER inpu Sound recoding\n");
 	}
 	close(sock);
 	return 0;
