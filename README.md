@@ -74,7 +74,22 @@
 
 <center><img src="image/sstructure.jpg"></center>
 
+해당 구조도에 따라 전체 프로젝트가 진행된다.     
+   
+
 ## E. 개발 결과물을 사용하는 방법 소개 (+프로그램 구동 화면 스크린샷 첨부)
+
+![image](https://user-images.githubusercontent.com/52690009/144751182-8cfadff3-fccd-428c-a0b7-a9cca3e5a972.png)
+
+server와 Client간의 음성 채팅 장면이다.    
+
+결과물을 사용하는 방법으로는 동일한 네트워크에 접속 후    
+어댑터를 이용해 브릿지 설정으로 바꾼다.      
+그 후 서버 측의 ip를 코드상에 적고 각가지 경로를 설정해준다.      
+그 후 해당 코드를 실행하면 서버와 클라이언트간의 음성이 전달되며    
+s, m, q등의 옵션이 있다.      
+s를 이용해 녹음을 시작할 때와, 녹음 후 출력으로 이어질 때는 블록킹이 걸려 있으므로 특정 입력값을 입력해주어야 한다.      
+
 ## F. 개발 결과물의 필요성 및 활용방안
 
 <center><img src="image/circle_room.jpg"></center>
